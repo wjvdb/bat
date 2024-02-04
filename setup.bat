@@ -86,6 +86,19 @@ reg add "%key%" /f /v ShowTaskViewButton        /t REG_DWORD /d 0
 reg add "%key%" /f /v StoreAppsOnTaskbar        /t REG_DWORD /d 0
 reg add "%key%" /f /v TaskbarAnimations         /t REG_DWORD /d 0
 
+echo Setting registry value to disable Microsoft Edge in the background...
+reg add "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main" /v "TabPreloader" /t REG_DWORD /d 0 /f >nul
+echo Registry value set successfully.
+
+set key=HKCU\Software\Microsoft\Windows\CurrentVersion\Search
+reg add "%key%" /f /v SearchboxTaskbarMode      /t REG_DWORD /d 0
+reg add "%key%" /f /v BingSearchEnabled         /t REG_DWORD /d 0
+reg add "%key%" /f /v AllowSearchToUseLocation  /t REG_DWORD /d 0
+reg add "%key%" /f /v CortanaConsent            /t REG_DWORD /d 0
+
+
+
+
 echo.
 echo All registry values have been set successfully.
 echo.
