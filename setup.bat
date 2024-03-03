@@ -97,6 +97,10 @@ reg add "%key%" /f /v AllowSearchToUseLocation  /t REG_DWORD /d 0
 reg add "%key%" /f /v CortanaConsent            /t REG_DWORD /d 0
 
 
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarDa" /t REG_DWORD /d 0 /f >nul
+echo Setting registry value: HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDa
+
+
 
 
 echo.
