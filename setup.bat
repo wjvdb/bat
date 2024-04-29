@@ -80,6 +80,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebCo
 echo Setting registry value: HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost\EnableWebContentEvaluation
 set key=HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecommendedSection" /t REG_DWORD /d 1 /f
+
+
 reg add "%key%" /f /v HideFileExt               /t REG_DWORD /d 0
 reg add "%key%" /f /v ShowCortanaButton         /t REG_DWORD /d 0
 reg add "%key%" /f /v ShowTaskViewButton        /t REG_DWORD /d 0
