@@ -1,9 +1,5 @@
 @echo off
 
-@echo off
-
-@echo off
-
 REM Check if running as administrator
 NET SESSION >nul 2>&1
 IF %ERRORLEVEL% EQU 0 (
@@ -80,8 +76,6 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebCo
 echo Setting registry value: HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost\EnableWebContentEvaluation
 set key=HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecommendedSection" /t REG_DWORD /d 1 /f
-
 
 reg add "%key%" /f /v HideFileExt               /t REG_DWORD /d 0
 reg add "%key%" /f /v ShowCortanaButton         /t REG_DWORD /d 0
@@ -112,7 +106,18 @@ echo Setting registry value: HKCU\Software\Microsoft\Windows\CurrentVersion\Expl
 
 
 
+echo Remove clutter from Start menu...
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackProgs" /t REG_DWORD /d 0 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_ShowMFUApps" /t REG_DWORD /d 0 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DisableNotificationCenter" /t REG_DWORD /d 1 /f >nul
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecommendedSection" /t REG_DWORD /d 1 /f
 
+
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d 0 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "AccentColor" /t REG_DWORD /d 4278255360 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "ColorPrevalence" /t REG_DWORD /d 0 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\DWM" /v "AccentColorInactive" /t REG_DWORD /d 0 /f >nul
+reg add "HKCU\Software\Microsoft\Windows\DWM" /v "ColorPrevalence" /t REG_DWORD /d 0 /f >nul
 echo.
 echo All registry values have been set successfully.
 echo.
