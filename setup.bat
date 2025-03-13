@@ -66,6 +66,7 @@ echo bravo six going dark
 set /p unclunck=Do you want to unclunck the taskbar and disable background websearches, ps the taskbar things will also disappear (no clue what i did and i dont care)  (y/n):
 
 if /i "%unclunck%"=="y" (
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoStartMenuMFUprogramsList /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "AutoCheckSelect" /t REG_DWORD /d 0 /f >nul
 REG ADD "HKLM\default\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v AllowCloudSearch /t REG_DWORD /d 0 /f
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoStartMenuPinnedList" /t REG_DWORD /d 1 /f
