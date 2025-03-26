@@ -139,6 +139,21 @@ if /i "%hideIcons%"=="y" (
 )
 
 
+
+echo.
+echo Do you want to disable or enable Windows Copilot?
+echo.
+set /p choice=Enter your choice (disable/enable): 
+
+if "%choice%"=="disable" (
+    reg add "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f
+    echo Windows Copilot has been disabled.
+) else (
+    reg delete "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot" /v TurnOffWindowsCopilot /f
+    echo Windows Copilot has been enabled.
+)
+
+
 taskkill /f /im explorer.exe
 start explorer.exe
 @echo off
