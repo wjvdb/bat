@@ -153,11 +153,11 @@ if "%choice%"=="y" (
     echo Windows Copilot has been enabled.
 )
 
-set /p adblock=adblock? stevenblack host y/n
-if "%adblock%"=="y"(
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts' -OutFile 'C:\Windows\System32\drivers\etc\hosts'"
-)
 
+set /p adblock=adblock? stevenblack host y/n
+if "%adblock%"=="y" (
+    powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts' -OutFile 'C:\Windows\System32\drivers\etc\hosts'"
+)
 
 taskkill /f /im explorer.exe
 start explorer.exe
