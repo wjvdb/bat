@@ -141,16 +141,21 @@ if /i "%hideIcons%"=="y" (
 
 
 echo.
-echo Do you want to disable or enable Windows Copilot?
+echo Do you want to disable Windows Copilot? (disable is y)
 echo.
-set /p choice=Enter your choice (disable/enable): 
+set /p choice=Enter your choice (y/n): 
 
-if "%choice%"=="disable" (
+if "%choice%"=="y" (
     reg add "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot" /v TurnOffWindowsCopilot /t REG_DWORD /d 1 /f
     echo Windows Copilot has been disabled.
 ) else (
     reg delete "HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot" /v TurnOffWindowsCopilot /f
     echo Windows Copilot has been enabled.
+)
+
+set /p adblock=adblock? stevenblack host y/n
+if "%adblock%"=="y"(
+powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts' -OutFile 'C:\Windows\System32\drivers\etc\hosts'"
 )
 
 
